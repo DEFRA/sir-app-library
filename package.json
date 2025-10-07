@@ -1,0 +1,17 @@
+{
+  "name": "sir-app-library",
+  "version": "0.1.0",
+  "description": "Library for shared code across smart incident reporting apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "author": "",
+  "license": "OGL-UK-3.0",
+  "devDependencies": {
+    "eslint": "9.37.0",
+    "neostandard": "0.12.2",
+    "vitest": "3.2.4"
+  },
+  "type": "module"
+}
