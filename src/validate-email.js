@@ -1,37 +1,20 @@
 const validateEmail = email => {
-  const maxLength = 255
-  const domainPartMaxLength = 63
-
-  // Regex originally used in public facing SIR app
-  const tester = /^[-!#$%&'*+\0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+\0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/
-
-  // https://en.wikipedia.org/wiki/Email_address  The format of an email address is local-part@domain, where the
-  // local part may be up to 64 octets long and the domain may have a maximum of 255 octets.
-  if (!email || email.length === 0 || email.length > maxLength) {
+  if (!email) {
     return false
   }
 
+  const tester = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.)+[a-zA-Z0-9-]{2,63}$/
+
+  if (!tester.test(email)) {
+    return false
+  }
+
+  const domainMaxLength = 255
   const emailParts = email.split('@')
 
-  if (emailParts.length !== 2 || !tester.test(email)) {
+  if (emailParts[1].length > domainMaxLength) {
     return false
   }
-
-  const account = emailParts[0]
-  const address = emailParts[1]
-  if (account.length > 64 || address.length > maxLength) {
-    return false
-  }
-
-  const domainParts = address.split('.')
-
-  // https://en.wikipedia.org/wiki/Email_address#Domain
-  // It must match the requirements for a hostname, a list of dot-separated DNS labels, each label being limited to a length of 63 characters
-  const domainIssue = domainParts.some(part => {
-    return part.length > domainPartMaxLength
-  })
-
-  return !domainIssue
 }
 
 export { validateEmail }
