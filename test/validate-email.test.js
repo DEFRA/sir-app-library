@@ -3,4 +3,5 @@ import { validateEmail } from '../src/validate-email.js'
 
 test('validates email address', () => {
   expect(validateEmail('')).toBe(false)
+  expect(validateEmail('test@Test.com')).toBe(true)
 })

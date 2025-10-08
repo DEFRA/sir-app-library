@@ -15,6 +15,8 @@ const validateEmail = email => {
   if (emailParts[1].length > domainMaxLength) {
     return false
   }
+
+  return true
 }
 
 export { validateEmail }
