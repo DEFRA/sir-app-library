@@ -17,6 +17,4 @@ const validateEmail = email => {
   return true
 }
 
-// TODO: add more unit tests; make SIR consume this too; strip all whitespace from email inputs
-
 export { validateEmail }
