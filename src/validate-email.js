@@ -1,5 +1,10 @@
+// Even though the domain part of an email address can be 255 chars,
+// in practice, the total email address is limited to 254 characters.
+// See https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
+const maxEmailLength = 254
+
 const validateEmail = email => {
-  if (!email) {
+  if (!email || email.length > maxEmailLength) {
     return false
   }
 
@@ -9,14 +14,9 @@ const validateEmail = email => {
     return false
   }
 
-  const domainMaxLength = 255
-  const emailParts = email.split('@')
-
-  if (emailParts[1].length > domainMaxLength) {
-    return false
-  }
-
   return true
 }
+
+// TODO: add more unit tests; make SIR consume this too; strip all whitespace from email inputs
 
 export { validateEmail }
