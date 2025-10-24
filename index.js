@@ -1,7 +1,5 @@
-const hello = () => {
-  return 'Hello'
-}
+import { validateEmail } from './src/validate-email.js'
 
 export {
-  hello
+  validateEmail
 }

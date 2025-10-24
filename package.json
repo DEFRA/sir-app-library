@@ -4,11 +4,12 @@
   "description": "Library for shared code across smart incident reporting apps",
   "main": "index.js",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest run --coverage"
   },
   "author": "",
   "license": "OGL-UK-3.0",
   "devDependencies": {
+    "@vitest/coverage-v8": "3.2.4",
     "eslint": "9.37.0",
     "neostandard": "0.12.2",
     "vitest": "3.2.4"
